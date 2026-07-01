@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RPG-Zombies")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8aaac5f596bc3efc9701f2dfa2d7ed52c2bf5dfb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+debf690d457d9a17623f67fa4944422a0fd53e73")]
 [assembly: System.Reflection.AssemblyProductAttribute("RPG-Zombies")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RPG-Zombies")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
