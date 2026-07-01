@@ -8,11 +8,11 @@ namespace rpgJogador;
 public class Jogador : Pessoa
 {
     private Inventario Inventario {get; set;}
-    private Arma ArmaEquipada;
+    private Arma? ArmaEquipada {get; set;} = null;
 
-    public Jogador(int vidamaxima, int vida, int ataque, int defesa, String nome, Inventario inventario, Arma armaequipada) : base(vidamaxima, vida, ataque, defesa, nome)
+    public Jogador(int vidamaxima, int vida, int ataque, int defesa, String nome, Arma? armaequipada) : base(vidamaxima, vida, ataque, defesa, nome)
     {
-        this.Inventario = inventario;
+        Inventario inventario = new Inventario(null, 10);
         this.ArmaEquipada = armaequipada;
     }
 }

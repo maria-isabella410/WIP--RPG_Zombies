@@ -14,4 +14,20 @@ public class SerVivo
         this.Ataque = ataque;
         this.Defesa = defesa;
     }
+
+    public void TomarDano(int dano)
+    {
+        Vida -= dano;
+    }
+    public Boolean EstaVivo()
+    {
+        if (Vida <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
