@@ -5,6 +5,7 @@ using rpgJogador;
 using rpgTipoArma;
 using rpgInventario;
 using rpgZombie;
+using rpgTipoZombie;
 
 namespace MainProgram;
 
@@ -28,5 +29,8 @@ public class Program{
         Arma faca = new Arma("Faca", "Uma arma pequena, mas eficiente (Causa 10 de dano)", 10, TipoArma.Faca, null, null);
 
         //zombies
+        Zombie zombieComum = new Zombie(80, 80, 15, 10, TipoZombie.Comum);
+        Zombie zombieJumper = new Zombie(100, 100, 30, 20, TipoZombie.Especial);
+        Zombie zombieTank = new Zombie(150, 150, 45, 35, TipoZombie.Especial);
     }
 }
