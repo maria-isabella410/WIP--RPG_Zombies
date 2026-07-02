@@ -34,4 +34,8 @@ public class Missao
     {
         return new Missao("- Billy está desaparecido -", "Você deve ir até a floresta e encontrar Billy, o cachorrinho do padre John. Se conseguir trazê-lo bem, será recompensado com suprimentos que o padre tem guardados. (Recompensa: 2 Comidas enlatadas e 1 Garrafa de água)", ItensDoJogo.CriarComidaEnlatada());
     }
+    public static Missao MissaoProfessora()
+    {
+        return new Missao("- Mary está sozinha -", "Você deve buscar na escola a aluna Mary, que se perdeu durante o surto. Ela está trancada em uma sala, mas a professora Sarah não consegue ir até lá porque há muitos zombies no caminho. Traga Mary bem e será recompensado com um kit médico. (Recompensa: Kit médico)", ItensDoJogo.CriarKitMed());
+    }
 }
