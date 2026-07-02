@@ -13,8 +13,8 @@ public class Local
     private Local? Leste {get; set;}
     private Local? Oeste {get; set;}
     private List<Item> Itens {get; set;}
+        private List<Npc> Npcs {get; set;}
     private List<Zombie> Zombies {get; set;}
-    private List<Npc> Npcs {get; set;}
 
     public Local(String nome, String descricao)
     {
@@ -22,7 +22,20 @@ public class Local
         this.Descricao = descricao;
         
         Itens = new List<Item>();
-        Zombies = new List<Zombie>();
         Npcs = new List<Npc>();
+        Zombies = new List<Zombie>();
+    }
+
+    public void AdicionarItens(Item item)
+    {
+        Itens.Add(item);
+    }
+    public void AdicionarNpc(Npc npc)
+    {
+        Npcs.Add(npc);
     }  
+    public void AdicionarZombie(Zombie zombie)
+    {
+        Zombies.Add(zombie);
+    }
 }
