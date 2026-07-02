@@ -12,7 +12,13 @@ public class Jogador : Pessoa
 
     public Jogador(int vidamaxima, int vida, int ataque, int defesa, String nome, Arma? armaequipada) : base(vidamaxima, vida, ataque, defesa, nome)
     {
-        Inventario inventario = new Inventario(null, 10);
+        this.Inventario = new Inventario(10);
         this.ArmaEquipada = armaequipada;
+    }
+
+    public void CriaJogador()
+    {
+        String nome = "Fulaninho";
+        Jogador jogador = new Jogador(100, 100, 30, 20, nome, null);
     }
 }

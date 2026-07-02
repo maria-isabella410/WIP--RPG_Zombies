@@ -5,12 +5,12 @@ namespace rpgInventario;
 
 public class Inventario
 {
-    private List<Item>? Itens {get; set;}
+    private List<Item> Itens {get; set;}
     private int Capacidade {get; set;}
 
-    public Inventario(List<Item>? itens, int capacidade)
+    public Inventario(int capacidade)
     {
-        this.Itens = itens;
+        Itens = new List<Item>();
         this.Capacidade = capacidade;
     }
 }
