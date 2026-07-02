@@ -18,8 +18,20 @@ public class Missao
         this.Descricao = descricao;
         this.Recompensa = recompensa;
     }
-    private void CriaMissao()
+    public static Missao MissaoPolicial()
     {
-        Missao missaoPolicial = new Missao("Encontrar a chave da sala de armas", "Você deve encontrar a chave da sala de armas. Provavelmente está na sala dos armários. Encontre a chave, traga-a para o policial Ethan e você ganhará uma arma como agradecimento. (Recompensa: Shotgun).", ItensDoJogo.CriarShotgun());
+        return new Missao("- Abra a sala de armas -", "Você deve encontrar a chave da sala de armas. Provavelmente está na sala dos armários. Encontre a chave, traga-a para o policial Ethan e você ganhará uma arma como agradecimento. (Recompensa: Shotgun)", ItensDoJogo.CriarShotgun());
+    }
+    public static Missao MissaoEnfermeira()
+    {
+        return new Missao("- Traga-me bandagens -", "Você deve entregar 3 bandagens para a enfermeira Grace, assim ela poderá tratar seus ferimentos. (Recompensa: Cura completa)", null);
+    }
+    public static Missao MissaoCientista()
+    {
+        return new Missao("- Enontre documentos perdidos -", "Você deve ir até a biblioteca e encontrar uma pasta de documentos deixada pelo cientista Freddie. Se trouxer o que ele precisa, ele poderá finalizar a criação do antídoto. (Recompensa: Imunidade ao vírus - Final bom)", ItensDoJogo.CriarAntidoto());
+    }
+    public static Missao MissaoPadre()
+    {
+        return new Missao("- Billy está desaparecido -", "Você deve ir até a floresta e encontrar Billy, o cachorrinho do padre John. Se conseguir trazê-lo bem, será recompensado com suprimentos que o padre tem guardados. (Recompensa: 2 Comidas enlatadas e 1 Garrafa de água)", ItensDoJogo.CriarComidaEnlatada());
     }
 }

@@ -18,9 +18,9 @@ public class ItensDoJogo
     {
         return new Arma("Faca", "Uma arma pequena, mas eficiente. (Causa 10 de dano)", 10, TipoArma.Faca, null, null);
     }
-    public static Consumivel CriarBandaid()
+    public static Consumivel CriarBandagem()
     {
-        return new Consumivel("Band-Aid", "Recupera um pouco da sua vida. (Cura 20)", 20);
+        return new Consumivel("Bandagem", "Recupera um pouco da sua vida. (Cura 20)", 20);
     }
     public static Consumivel CriarKitMed()
     {
@@ -32,10 +32,14 @@ public class ItensDoJogo
     }
     public static Consumivel CriarAgua()
     {
-        return new Consumivel("Garrada de Água", "Mata sua sede. (Cura 15)", 15);
+        return new Consumivel("Garrafa de Água", "Mata sua sede. (Cura 15)", 15);
     }
     public static Consumivel CriarComidaEnlatada()
     {
         return new Consumivel("Comida enlatada", "Uma comida feita para durar bastante. (Cura 15)", 15);
+    }
+    public static Consumivel CriarAntidoto()
+    {
+        return new Consumivel("Antídoto", "A esperança da humanidade.", 100);
     }    
 }
