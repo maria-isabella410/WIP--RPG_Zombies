@@ -99,6 +99,16 @@ public class ItensDoJogo
         return new Item("Pilhas para lanterna", "Para manter sua lanterna funcionando.");
     }
 
+    //munição
+    public static Item CriarMunicaoPistola()
+    {
+        return new Item("Munição de pistola", "Um pente de 12 balas de pistola.");
+    } //TERMINAR DPS
+    public static Item CriarMunicaoShotgun()
+    {
+        return new Item("Munição de shotgun", "8 cartuchos de balas de shotgun.");
+    } //TERMINAR DPS
+
     //itens de missao
     public static Item CriarDiario()
     {

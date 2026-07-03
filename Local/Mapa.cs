@@ -22,10 +22,13 @@ public class Mapa
     private Local floresta;
     private Local biblioteca;
     private Local laboratorio;
+    private Random random {get; set;} = new Random();
 
-    public Mapa()
+
+    public Mapa(Random random)
     {
         Locais = new List<Local>();
+        this.random = random;
 
         CriarLocais();
         ConectarLocais();
@@ -119,16 +122,55 @@ public class Mapa
         igreja.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
 
         //rua principal
+        ruaPrincipal.AdicionarItens(ItensDoJogo.CriarAgua());
+        ruaPrincipal.AdicionarItens(ItensDoJogo.CriarBandagem());
+        ruaPrincipal.AdicionarItens(ItensDoJogo.CriarFaca());
 
-
+        if(random.Next(100) < 40)
+        {
+            ruaPrincipal.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());    
+        }
+        if(random.Next(100) < 5)
+        {
+            ruaPrincipal.AdicionarItens(ItensDoJogo.CriarMochila());    
+        }
         //delegacia
-        delegacia.AdicionarItens(ItensDoJogo.CriarShotgun());
+        delegacia.AdicionarItens(ItensDoJogo.CriarPistola());
+        delegacia.AdicionarItens(ItensDoJogo.CriarChaveSalaDeArmas());
+
+        if(random.Next(100) < 80)
+        {
+            
+        }
 
         //posto de gasolina
 
 
         //mercado
+        mercado.AdicionarItens(ItensDoJogo.CriarAgua());
+        mercado.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+        mercado.AdicionarItens(ItensDoJogo.CriarBandagem());
 
+        if(random.Next(100) < 30)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+        }
+        if(random.Next(100) < 30)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
+        if(random.Next(100) < 70)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 30)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarKitMed());
+        }
+        if(random.Next(100) < 25)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarSpray());
+        }
 
         //casa abandonada
 
