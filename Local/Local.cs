@@ -6,14 +6,14 @@ namespace rpgLocal;
 
 public class Local
 {
-    private String Nome {get; set;}
-    private String Descricao {get; set;}
-    private Local? Norte {get; set;}
-    private Local? Sul {get; set;}
-    private Local? Leste {get; set;}
-    private Local? Oeste {get; set;}
+    public String Nome {get; private set;}
+    public String Descricao {get; private set;}
+    public Local? Norte {get; set;}
+    public Local? Sul {get; set;}
+    public Local? Leste {get; set;}
+    public Local? Oeste {get; set;}
     private List<Item> Itens {get; set;}
-        private List<Npc> Npcs {get; set;}
+    private List<Npc> Npcs {get; set;}
     private List<Zombie> Zombies {get; set;}
 
     public Local(String nome, String descricao)

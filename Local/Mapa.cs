@@ -2,6 +2,8 @@ using rpgLocal;
 using rpgItem;
 using rpgZombie;
 using rpgNpc;
+using rpgNpcsDoJogo;
+using rpgItensDoJogo;
 
 namespace rpgMapa;
 
@@ -59,15 +61,99 @@ public class Mapa
     }
     private void ConectarLocais()
     {
+        //futuramente adicionar parametros no metodo para ser mais otimizado, mas no momento vai ficar assim especialmente para melhor visualização da logica do mapa :)
+
+        //floresta
+        floresta.Sul = igreja;
+
+        //igreja
+        igreja.Norte = floresta;
+        igreja.Sul = ruaPrincipal;
+
+        //rua principal
+        ruaPrincipal.Norte = igreja;
+        ruaPrincipal.Sul = delegacia;
+        ruaPrincipal.Leste = escola;
+        ruaPrincipal.Oeste = mercado;
+
+        //mercado
+        mercado.Leste = ruaPrincipal;
+        mercado.Sul = casaAbandonada;
+
+        //delegacia
+        delegacia.Norte = ruaPrincipal;
+        delegacia.Sul = postoDeGasolina;
+
+        //escola
+        escola.Oeste = ruaPrincipal;
+        escola.Sul = biblioteca;
+
+        //casa abandonada
+        casaAbandonada.Norte = mercado;
+        casaAbandonada.Leste = hospital;
         
+        //posto de gasolina
+        postoDeGasolina.Norte = delegacia;
+        postoDeGasolina.Sul = hospital;
+
+        //biblioteca
+        biblioteca.Norte = escola;
+        biblioteca.Oeste = hospital;
+
+        //hospital
+        hospital.Norte = postoDeGasolina;
+        hospital.Sul = laboratorio;
+        hospital.Leste = biblioteca;
+        hospital.Oeste = casaAbandonada;
+
+        //laboratorio
+        laboratorio.Norte = hospital;
     }
     private void AdicionarItens()
     {
-        
+        //floresta
+
+
+        //igreja
+        igreja.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+
+        //rua principal
+
+
+        //delegacia
+        delegacia.AdicionarItens(ItensDoJogo.CriarShotgun());
+
+        //posto de gasolina
+
+
+        //mercado
+
+
+        //casa abandonada
+
+
+        //escola
+
+
+        //biblioteca
+
+
+        //hospital
+        hospital.AdicionarItens(ItensDoJogo.CriarKitMed());
+
+        //laboratorio
+        laboratorio.AdicionarItens(ItensDoJogo.CriarAntidoto());
+
     }
     private void AdicionarNpcs()
     {
-        
+        igreja.AdicionarNpc(NpcsDoJogo.CriaPadre());
+        floresta.AdicionarNpc(NpcsDoJogo.CriaCachorro());
+        delegacia.AdicionarNpc(NpcsDoJogo.CriaPolicial());
+        escola.AdicionarNpc(NpcsDoJogo.CriaProfessora());
+        escola.AdicionarNpc(NpcsDoJogo.CriaCrianca());
+        hospital.AdicionarNpc(NpcsDoJogo.CriaEnfermeira());
+        laboratorio.AdicionarNpc(NpcsDoJogo.CriaCientista());
     }
     private void AdicionarZombies()
     {
