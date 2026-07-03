@@ -8,6 +8,7 @@ namespace rpgMapa;
 public class Mapa
 {
     private List<Local> Locais {get; set;}
+    private Local ruaPrincipal;
     private Local mercado;
     private Local igreja;
     private Local casaAbandonada;
@@ -23,12 +24,17 @@ public class Mapa
     {
         Locais = new List<Local>();
 
-        CriarMapa();
+        CriarLocais();
+        ConectarLocais();
+        AdicionarItens();
+        AdicionarNpcs();
+        AdicionarZombies();
     }
 
-    private void CriarMapa()
+    private void CriarLocais()
     {
      //locais
+        ruaPrincipal = new Local("Rua principal", "A rua que conecta os principais pontos da cidade.");
         mercado = new Local("Mercado", "Um mercado todo bagunçado, aparentemente foi para onde muitas pessoas vieram no início do surto. Talvez você encontre coisas úteis aqui.");
         igreja = new Local("Igreja", "Uma igreja local, mas está toda ensanguentada e com as janelas quebradas. Deve ter sido um abrigo no início do surto.");
         casaAbandonada = new Local("Casa Abandonada", "Uma casa velha e quebrada, mas nas situações atuais, pode ser um bom abrigo. Ou não.");
@@ -38,6 +44,33 @@ public class Mapa
         escola = new Local("Escola", "Uma escola estudual, sempre vivída com crianças. Mas hoje, cos portões estão abertos e há diversos corpos no pátio. Talvez você encontre algum sobrevivente.");
         floresta = new Local("Floresta", "Uma grande floresta na extremidade da cidade. É uma boa rota de fuga, mas saiba onde você está, pois é fácil se perder.");
         biblioteca = new Local("Biblioteca", "A biblioteca central da cidade, com diversas enciclopédias. Talvez você descubra algo interessante nos livros.");
-        laboratorio = new Local("Laboratório", "O laboratório federal, onde os principais estudos eram feitos. O que ele guarda pode mudar tudo.");   
+        laboratorio = new Local("Laboratório", "O laboratório federal, onde os principais estudos eram feitos. O que ele guarda pode mudar tudo.");
+
+        Locais.Add(ruaPrincipal);
+        Locais.Add(mercado);
+        Locais.Add(igreja);
+        Locais.Add(casaAbandonada);
+        Locais.Add(hospital);
+        Locais.Add(delegacia);
+        Locais.Add(postoDeGasolina);   
+        Locais.Add(escola);
+        Locais.Add(biblioteca);
+        Locais.Add(laboratorio);
+    }
+    private void ConectarLocais()
+    {
+        
+    }
+    private void AdicionarItens()
+    {
+        
+    }
+    private void AdicionarNpcs()
+    {
+        
+    }
+    private void AdicionarZombies()
+    {
+        
     }
 }
