@@ -1,11 +1,17 @@
 using rpgArma;
+using rpgChave;
 using rpgConsumivel;
+using rpgItem;
+using rpgLocal;
+using rpgMapa;
 using rpgTipoArma;
+using rpgTipoChave;
 
 namespace rpgItensDoJogo;
 
 public class ItensDoJogo
 {
+    //armas
     public static Arma CriarPistola()
     {
         return new Arma("Pistola", "Uma arma eficiente contra inimigos. (Causa 25 de dano)", 25, TipoArma.Pistola, 12, 12);
@@ -18,6 +24,8 @@ public class ItensDoJogo
     {
         return new Arma("Faca", "Uma arma pequena, mas eficiente. (Causa 10 de dano)", 10, TipoArma.Faca, null, null);
     }
+
+    //consumiveis
     public static Consumivel CriarBandagem()
     {
         return new Consumivel("Bandagem", "Recupera um pouco da sua vida. (Cura 20)", 20);
@@ -32,14 +40,72 @@ public class ItensDoJogo
     }
     public static Consumivel CriarAgua()
     {
-        return new Consumivel("Garrafa de Água", "Mata sua sede. (Cura 15)", 15);
+        return new Consumivel("Garrafa de Água", "Mata sua sede. (Cura 25)", 25);
     }
     public static Consumivel CriarComidaEnlatada()
     {
-        return new Consumivel("Comida enlatada", "Uma comida feita para durar bastante. (Cura 15)", 15);
+        return new Consumivel("Comida enlatada", "Uma comida feita para durar bastante. (Cura 25)", 25);
     }
     public static Consumivel CriarAntidoto()
     {
         return new Consumivel("Antídoto", "A esperança da humanidade.", 100);
-    }    
+    }
+
+    //chaves
+    public static Chave CriarChaveSalaDeArmas()
+    {
+        return new Chave("Chave da sala de armas", "A chave que o policial Ethan estava procurando. Com ela, você consegue desbloquear a sala de armas.", TipoChave.SalaDeArmas);
+    }
+    public static Chave CriarChaveSalaDeAula()
+    {
+        return new Chave("Chave da sala de aula", "A chave que abre as salas de aula da escola. Com ela você consegue explorar mais lugares e procurar a garotinha Mary.", TipoChave.SalaDeAula);
+    }
+    public static Chave CriarChaveSalaBiblioteca()
+    {
+        return new Chave("Chave da biblioteca", "A chave abre a sala de arquivos confidenciais da biblioteca. Com ela, você consegue encontrar os arquivos que o cientista Freddie precisa.", TipoChave.SalaBiblioteca);
+    }
+    public static Chave CriarChaveArmarioHospital()
+    {
+        return new Chave("Chave do estoque do hospital", "A chave que abre a sala de estoque do hospital. Com ela, você consegue encontrar diversos itens de cura.", TipoChave.ArmarioHospital);
+    }
+    public static Chave CriarChaveLaboratorio()
+    {
+        return new Chave("Chave do hall do laboratório", "A chave que dá acesso às áreas restritas do laboratório. Com ela, você consegue chegar à sala de testes e ajudar o cientista Freddie a concluir a pesquisa dele.", TipoChave.Laboratorio);
+    }
+    
+    //itens comuns
+    public static Item CriarMapaDaCidade()
+    {
+        return new Item("Mapa da cidade", "Explorar a cidade se torna uma tarefa mais fácil.");
+    }
+    public static Item CriarMochila()
+    {
+        return new Item("Mochila", "Permite carregar um número maior de itens.");
+    }
+    public static Item CriarPeDeCabra()
+    {
+        return new Item("Pé de cabra", "Portas emperradas não serão mais um problema.");
+    }
+    public static Item CriarColete()
+    {
+        return new Item("Colete balístico", "Graças ao material resistente, os ataques têm menos efeito.");
+    }
+    public static Item CriarLanterna()
+    {
+        return new Item("Lanterna", "Ideal para locais escuros.");
+    }
+    public static Item CriarPilhas()
+    {
+        return new Item("Pilhas para lanterna", "Para manter sua lanterna funcionando.");
+    }
+
+    //itens de missao
+    public static Item CriarDiario()
+    {
+        return new Item("Diário do Mark", "Onde o parceiro do cientista Freddie escreveu todas as descobertas sobre o vírus.");
+    }
+    public static Item CriarColeira()
+    {
+        return new Item("Coleira do Billy", "Uma coleira vermelha com o nome 'Billy' escrito.");
+    }
 }

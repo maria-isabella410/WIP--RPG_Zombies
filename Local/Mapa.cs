@@ -4,6 +4,7 @@ using rpgZombie;
 using rpgNpc;
 using rpgNpcsDoJogo;
 using rpgItensDoJogo;
+using rpgZombiesDoJogo;
 
 namespace rpgMapa;
 
@@ -157,6 +158,8 @@ public class Mapa
     }
     private void AdicionarZombies()
     {
-        
+        postoDeGasolina.AdicionarZombie(ZombiesDoJogo.CriaZombieJumper());
+        escola.AdicionarZombie(ZombiesDoJogo.CriaZombieTank());
+        laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieFinal());
     }
 }

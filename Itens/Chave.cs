@@ -1,14 +1,14 @@
 using rpgItem;
-using rpgLocal;
+using rpgTipoChave;
 
 namespace rpgChave;
 
 public class Chave : Item
 {
-    private Local LocalDesbloqueado {get; set;}
+    private TipoChave Tipo {get; set;}
 
-    public Chave(String nome, String descricao, Local localdesbloqueado) : base(nome, descricao)
+    public Chave(String nome, String descricao, TipoChave tipo) : base(nome, descricao)
     {
-        this.LocalDesbloqueado = localdesbloqueado;
+        this.Tipo = tipo;
     }
 }
