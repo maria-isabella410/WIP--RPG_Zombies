@@ -116,10 +116,38 @@ public class Mapa
     private void AdicionarItens()
     {
         //floresta
-
+        if(random.Next(100) < 20)
+        {
+            floresta.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
+        if(random.Next(100) < 15)
+        {
+            floresta.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 50)
+        {
+            floresta.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
 
         //igreja
         igreja.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+
+        if(random.Next(100) < 50)
+        {
+            igreja.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 40)
+        {
+            igreja.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
+        if(random.Next(100) < 10)
+        {
+            igreja.AdicionarItens(ItensDoJogo.CriarKitMed());
+        }
+        if(random.Next(100) < 50)
+        {
+            igreja.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
 
         //rua principal
         ruaPrincipal.AdicionarItens(ItensDoJogo.CriarAgua());
@@ -134,17 +162,43 @@ public class Mapa
         {
             ruaPrincipal.AdicionarItens(ItensDoJogo.CriarMochila());    
         }
+
         //delegacia
         delegacia.AdicionarItens(ItensDoJogo.CriarPistola());
         delegacia.AdicionarItens(ItensDoJogo.CriarChaveSalaDeArmas());
 
         if(random.Next(100) < 80)
         {
-            
+            delegacia.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
+        if(random.Next(100) < 40)
+        {
+            delegacia.AdicionarItens(ItensDoJogo.CriarMunicaoShotgun());
+        }
+        if(random.Next(100) < 30)
+        {
+            delegacia.AdicionarItens(ItensDoJogo.CriarBandagem());
         }
 
         //posto de gasolina
+        postoDeGasolina.AdicionarItens(ItensDoJogo.CriarAgua());
 
+        if(random.Next(100) < 40)
+        {
+            postoDeGasolina.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+        }
+        if(random.Next(100) < 30)
+        {
+            postoDeGasolina.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 20)
+        {
+            postoDeGasolina.AdicionarItens(ItensDoJogo.CriarSpray());
+        }
+        if(random.Next(100) < 50)
+        {
+            postoDeGasolina.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
 
         //mercado
         mercado.AdicionarItens(ItensDoJogo.CriarAgua());
@@ -171,21 +225,109 @@ public class Mapa
         {
             mercado.AdicionarItens(ItensDoJogo.CriarSpray());
         }
+        if(random.Next(100) < 50)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
+        if(random.Next(100) < 40)
+        {
+            mercado.AdicionarItens(ItensDoJogo.CriarMunicaoShotgun());
+        }
 
         //casa abandonada
+        casaAbandonada.AdicionarItens(ItensDoJogo.CriarAgua());
 
+        if(random.Next(100) < 40)
+        {
+            casaAbandonada.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 35)
+        {
+            casaAbandonada.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+        }
+        if(random.Next(100) < 25)
+        {
+            casaAbandonada.AdicionarItens(ItensDoJogo.CriarSpray());
+        }
+        if(random.Next(100) < 30)
+        {
+            casaAbandonada.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
+        if(random.Next(100) < 20)
+        {
+            casaAbandonada.AdicionarItens(ItensDoJogo.CriarMunicaoShotgun());
+        }
 
         //escola
+        escola.AdicionarItens(ItensDoJogo.CriarChaveSalaDeAula());
 
+        if(random.Next(100) < 40)
+        {
+            escola.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 20)
+        {
+            escola.AdicionarItens(ItensDoJogo.CriarComidaEnlatada());
+        }
+        if(random.Next(100) < 20)
+        {
+            escola.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
 
         //biblioteca
+        biblioteca.AdicionarItens(ItensDoJogo.CriarChaveSalaBiblioteca());
+        biblioteca.AdicionarItens(ItensDoJogo.CriarDiario());
 
+        if(random.Next(100) < 20)
+        {
+            biblioteca.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
+        if(random.Next(100) < 20)
+        {
+            biblioteca.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
 
         //hospital
+        hospital.AdicionarItens(ItensDoJogo.CriarChaveArmarioHospital());
         hospital.AdicionarItens(ItensDoJogo.CriarKitMed());
+        hospital.AdicionarItens(ItensDoJogo.CriarSpray());
+
+        if(random.Next(100) < 80)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarBandagem());
+        }
+        if(random.Next(100) < 50)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarSpray());
+        }
+        if(random.Next(100) < 40)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarAgua());
+        }
+        if(random.Next(100) < 30)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarKitMed());
+        }
+        if(random.Next(100) < 40)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarMunicaoPistola());
+        }
+        if(random.Next(100) < 30)
+        {
+            hospital.AdicionarItens(ItensDoJogo.CriarMunicaoShotgun());
+        }
 
         //laboratorio
         laboratorio.AdicionarItens(ItensDoJogo.CriarAntidoto());
+
+        if(random.Next(100) < 40)
+        {
+            laboratorio.AdicionarItens(ItensDoJogo.CriarSpray());
+        }
+        if(random.Next(100) < 30)
+        {
+            laboratorio.AdicionarItens(ItensDoJogo.CriarKitMed());
+        }
 
     }
     private void AdicionarNpcs()
@@ -195,13 +337,104 @@ public class Mapa
         delegacia.AdicionarNpc(NpcsDoJogo.CriaPolicial());
         escola.AdicionarNpc(NpcsDoJogo.CriaProfessora());
         escola.AdicionarNpc(NpcsDoJogo.CriaCrianca());
-        hospital.AdicionarNpc(NpcsDoJogo.CriaEnfermeira());
+        hospital.AdicionarNpc(NpcsDoJogo.CriaEnfermeira()); 
         laboratorio.AdicionarNpc(NpcsDoJogo.CriaCientista());
     }
     private void AdicionarZombies()
     {
+        //rua principal
+        ruaPrincipal.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+
+        //igreja
+        igreja.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 10)
+        {
+            igreja.AdicionarZombie(ZombiesDoJogo.CriaZombieJumper());
+        }
+
+
+        //floresta
+        floresta.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 20)
+        {
+            igreja.AdicionarZombie(ZombiesDoJogo.CriaZombieJumper());
+        }
+
+
+        //mercado
+        mercado.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+        mercado.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+
+        if(random.Next(100) < 40)
+        {
+            mercado.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        }
+        if(random.Next(100) < 5)
+        {
+            mercado.AdicionarZombie(ZombiesDoJogo.CriaZombieTank());
+        }
+
+        //casa abandonada
+        casaAbandonada.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+
+        if(random.Next(100) < 40)
+        {
+            casaAbandonada.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+        }
+
+        //delegacia
+        delegacia.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        delegacia.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 20)
+        {
+            delegacia.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+        }
+
+        //posto de gasolina
         postoDeGasolina.AdicionarZombie(ZombiesDoJogo.CriaZombieJumper());
+        postoDeGasolina.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 50)
+        {
+            postoDeGasolina.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        }
+
+        //escola
         escola.AdicionarZombie(ZombiesDoJogo.CriaZombieTank());
+        escola.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        escola.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 20)
+        {
+            escola.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+        }
+
+        //hospital
+        hospital.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        hospital.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        hospital.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+        if(random.Next(100) < 40)
+        {
+            hospital.AdicionarZombie(ZombiesDoJogo.CriaZombieJumper());
+        }
+        if(random.Next(100) < 60)
+        {
+            hospital.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+        }
+
+        //biblioteca
+        biblioteca.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
+
+
+        //laboratorio
+        laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieComumForte());
+        laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
         laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieFinal());
+
     }
 }

@@ -2,10 +2,10 @@ using rpgArma;
 using rpgChave;
 using rpgConsumivel;
 using rpgItem;
-using rpgLocal;
-using rpgMapa;
+using rpgMunicao;
 using rpgTipoArma;
 using rpgTipoChave;
+using rpgTipoMunicao;
 
 namespace rpgItensDoJogo;
 
@@ -14,15 +14,15 @@ public class ItensDoJogo
     //armas
     public static Arma CriarPistola()
     {
-        return new Arma("Pistola", "Uma arma eficiente contra inimigos. (Causa 25 de dano)", 25, TipoArma.Pistola, 12, 12);
+        return new Arma("Pistola", "Uma arma eficiente contra inimigos. (Causa 25 de dano)", 25, TipoArma.Pistola, TipoMunicao.MunicaoPistola, 12, 12);
     }
     public static Arma CriarShotgun()
     {
-        return new Arma("Shotgun", "Uma arma poderosa que faz um bom estrago. (Causa 50 de dano)", 50, TipoArma.Shotgun, 8, 8);
+        return new Arma("Shotgun", "Uma arma poderosa que faz um bom estrago. (Causa 50 de dano)", 50, TipoArma.Shotgun, TipoMunicao.MunicaoShotgun, 8, 8);
     }
     public static Arma CriarFaca()
     {
-        return new Arma("Faca", "Uma arma pequena, mas eficiente. (Causa 10 de dano)", 10, TipoArma.Faca, null, null);
+        return new Arma("Faca", "Uma arma pequena, mas eficiente. (Causa 10 de dano)", 10, TipoArma.Faca, null, null, null);
     }
 
     //consumiveis
@@ -100,14 +100,14 @@ public class ItensDoJogo
     }
 
     //munição
-    public static Item CriarMunicaoPistola()
+    public static Municao CriarMunicaoPistola()
     {
-        return new Item("Munição de pistola", "Um pente de 12 balas de pistola.");
-    } //TERMINAR DPS
-    public static Item CriarMunicaoShotgun()
+        return new Municao("Munição de pistola", "Um pente com 12 balas.", TipoMunicao.MunicaoPistola, 12);
+    }
+    public static Municao CriarMunicaoShotgun()
     {
-        return new Item("Munição de shotgun", "8 cartuchos de balas de shotgun.");
-    } //TERMINAR DPS
+        return new Municao("Munição de shotgun", "8 cartuchos.", TipoMunicao.MunicaoShotgun, 8);
+    }
 
     //itens de missao
     public static Item CriarDiario()
