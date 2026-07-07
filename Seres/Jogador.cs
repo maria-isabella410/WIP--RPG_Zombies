@@ -8,7 +8,7 @@ namespace rpgJogador;
 public class Jogador : Pessoa
 {
     private Inventario Inventario {get; set;}
-    private Arma? ArmaEquipada {get; set;} = null;
+    public Arma? ArmaEquipada {get; private set;} = null;
 
     public Jogador(int vidamaxima, int vida, int ataque, int defesa, String nome, Arma? armaequipada) : base(vidamaxima, vida, ataque, defesa, nome)
     {
