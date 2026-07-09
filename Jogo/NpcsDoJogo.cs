@@ -7,30 +7,30 @@ public class NpcsDoJogo
 {
     public static Npc CriaPolicial()
     {
-        return new Npc("Ethan", MissoesDoJogo.CriaMissaoPolicial(), 120, 120, 0, 40);
+        return new Npc("Ethan", 120, 120, 0, 40, 0, MissoesDoJogo.CriaMissaoPolicial());
     }
     public static Npc CriaCientista()
     {
-        return new Npc("Freddie", MissoesDoJogo.CriaMissaoCientista(), 100, 100, 0, 20);
+        return new Npc("Freddie", 100, 100, 0, 20, 0, MissoesDoJogo.CriaMissaoCientista());
     }
     public static Npc CriaPadre()
     {
-        return new Npc("John", MissoesDoJogo.CriaMissaoPadre(), 100, 100, 0, 10);
+        return new Npc("John", 100, 100, 0, 10, 0, MissoesDoJogo.CriaMissaoPadre());
     }
     public static Npc CriaCachorro()
     {
-        return new Npc("Billy", null, 40, 40, 0, 10);
+        return new Npc("Billy", 40, 40, 0, 10, 0, null);
     }
     public static Npc CriaEnfermeira()
     {
-        return new Npc("Grace", MissoesDoJogo.CriaMissaoEnfermeira(), 100, 100, 0, 10);
+        return new Npc("Grace", 100, 100, 0, 10, 0, MissoesDoJogo.CriaMissaoEnfermeira());
     } 
     public static Npc CriaProfessora()
     {
-        return new Npc("Sarah", MissoesDoJogo.CriaMissaoProfessora(), 100, 100, 0, 20);
+        return new Npc("Sarah", 100, 100, 0, 20, 0, MissoesDoJogo.CriaMissaoProfessora());
     }
     public static Npc CriaCrianca()
     {
-        return new Npc("Mary", null, 60, 60, 0, 10);
+        return new Npc("Mary", 60, 60, 0, 10, 0, null);
     }
 }

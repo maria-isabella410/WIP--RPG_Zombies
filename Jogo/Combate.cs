@@ -1,5 +1,6 @@
 using rpgArma;
 using rpgJogador;
+using rpgSerVivo;
 using rpgZombie;
 
 namespace rpgCombate;
@@ -8,13 +9,13 @@ public class Combate
 {   
     private Jogador Jogador {get; set;}
     private Zombie Zombie {get; set;}
-    private Random Random {get; set;}
+    private Random random {get; set;}
 
     public Combate(Jogador jogador, Zombie zombie, Random random)
     {
         this.Jogador = jogador;
         this.Zombie = zombie;
-        this.Random = random;
+        this.random = random;
     }
     private void IniciarCombate()
     {
@@ -55,11 +56,20 @@ public class Combate
                 if (Jogador.ArmaEquipada.TemMunicao())
                 {
                     Jogador.ArmaEquipada.GastarMunicao();
-                    Zombie.TomarDano();
+                    Zombie.TomarDano(CalcularDano());
                 }
                 Console.WriteLine("Você atacou o zombie!");
                 break;
             case opcoesMenu.Desviar:
+                if(TentarDesviar(Jogador, Zombie))
+                {
+                    Console.WriteLine("Você desviou do ataque!");
+                }
+                else
+                {
+                    Jogador.TomarDano(CalcularDano());
+                    Console.WriteLine("Você não conseguiu desviar!");
+                }
                 break;
             case opcoesMenu.EquiparArma:
                 Console.WriteLine("Qual arma deseja equipar?");
@@ -81,6 +91,14 @@ public class Combate
     private Boolean VerificarFim()
     {
         
+    }
+    private Boolean TentarDesviar(SerVivo defensor, SerVivo atacante)
+    {
+        int chance = 20 + defensor.Agilidade - atacante.Agilidade;
+
+        chance = Math.Clamp(chance, 5, 80);
+
+        return random.Next(100) < chance;
     }
     
 }
