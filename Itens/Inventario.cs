@@ -21,7 +21,7 @@ public class Inventario
         
         foreach(Item item in Itens)
         {
-            if(item == Arma arma)
+            if(item is Arma arma)
             {
                 armas.Add(arma);
             }
@@ -36,12 +36,6 @@ public class Inventario
     }
     public void DescartarItem(Item item)
     {
-        foreach(var i in Itens)
-        {
-            if(i == item)
-            {
-               Itens.Remove(item); 
-            }
-        }
+        Itens.Remove(item); 
     }
 }
