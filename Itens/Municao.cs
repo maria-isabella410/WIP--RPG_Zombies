@@ -5,8 +5,8 @@ namespace rpgMunicao;
 
 public class Municao : Item
 {
-    private TipoMunicao TipoMunicao {get; set;}
-    private int Quantidade {get; set;}
+    public TipoMunicao TipoMunicao {get; private set;}
+    public int Quantidade {get; private set;}
 
     public Municao(String nome, String descricao, TipoMunicao tipomunicao, int quantidade) : base(nome, descricao)
     {

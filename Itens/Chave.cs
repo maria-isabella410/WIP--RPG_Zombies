@@ -5,7 +5,7 @@ namespace rpgChave;
 
 public class Chave : Item
 {
-    private TipoChave Tipo {get; set;}
+    public TipoChave Tipo {get; private set;}
 
     public Chave(String nome, String descricao, TipoChave tipo) : base(nome, descricao)
     {

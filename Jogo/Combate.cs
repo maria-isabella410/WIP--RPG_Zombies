@@ -1,6 +1,7 @@
 using rpgArma;
 using rpgJogador;
 using rpgSerVivo;
+using rpgTipoArma;
 using rpgZombie;
 
 namespace rpgCombate;
@@ -56,7 +57,7 @@ public class Combate
                 if (Jogador.ArmaEquipada.TemMunicao())
                 {
                     Jogador.ArmaEquipada.GastarMunicao();
-                    Zombie.TomarDano(CalcularDano());
+                    Zombie.TomarDano(CalcularDano(Jogador.ArmaEquipada, Jogador, Zombie));
                 }
                 Console.WriteLine("Você atacou o zombie!");
                 break;
@@ -67,7 +68,7 @@ public class Combate
                 }
                 else
                 {
-                    Jogador.TomarDano(CalcularDano());
+                    Jogador.TomarDano(CalcularDano(null, Zombie, Jogador));
                     Console.WriteLine("Você não conseguiu desviar!");
                 }
                 break;
@@ -75,7 +76,7 @@ public class Combate
                 Console.WriteLine("Qual arma deseja equipar?");
                 break;
             case opcoesMenu.Recarregar:
-                Jogador.ArmaEquipada?.Recarregar();
+                Jogador.ArmaEquipada?.Recarregar(Jogador.ArmaEquipada);
                 break;
         }
 
@@ -84,13 +85,28 @@ public class Combate
     {
         
     }
-    private int CalcularDano()
+    private int CalcularDano(Arma arma, SerVivo atacante, SerVivo defensor)
     {
-        
+        int dano = atacante.Ataque;
+
+        if(arma != null)
+        {
+            dano += arma.Dano; 
+        }
+
+        dano -= defensor.Defesa;
+
+        dano += random.Next(-3, 4);
+
+        return Math.Max(1, dano);
     }
     private Boolean VerificarFim()
     {
-        
+        if(!Jogador.EstaVivo() || !Zombie.EstaVivo())
+        {
+            return true;
+        }
+        else return false;
     }
     private Boolean TentarDesviar(SerVivo defensor, SerVivo atacante)
     {

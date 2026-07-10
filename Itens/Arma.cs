@@ -7,11 +7,11 @@ namespace rpgArma;
 
 public class Arma : Item
 {
-    private int Dano {get; set;}
-    private TipoArma Tipo {get; set;}
-    private TipoMunicao? TipoMunicao {get; set;}
-    private int? CapacidadeMunicao {get; set;} = null;
-    private int? Municao {get; set;} = null;
+    public int Dano {get; private set;}
+    public TipoArma Tipo {get; private set;}
+    public TipoMunicao? TipoMunicao {get; private set;}
+    public int? CapacidadeMunicao {get; private set;} = null;
+    public int? Municao {get; private set;} = null;
 
     public Arma(String nome, String descricao, int dano, TipoArma tipo, TipoMunicao? tipomunicao, int? capacidademunicao, int? municao) : base(nome, descricao)
     {
@@ -31,14 +31,14 @@ public class Arma : Item
     {
         Municao -= 1;
     }
-    public void Recarregar()
+    public void Recarregar(Arma arma)
     {
-        if(Municao == CapacidadeMunicao)
+        if(arma.Municao == arma.CapacidadeMunicao)
         {
             Console.WriteLine("Sua arma já está cheia!");
             return;
         }
-        while(Municao != CapacidadeMunicao)
+        while(arma.Municao != arma.CapacidadeMunicao)
         {
             Municao++;   
         }

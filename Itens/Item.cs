@@ -1,8 +1,8 @@
 namespace rpgItem;
 
 public class Item{
-    private String Nome {get; set;}
-    private String Descricao {get; set;}
+    public String Nome {get; private set;}
+    public String Descricao {get; private set;}
 
     public Item(String nome, String descricao)
     {

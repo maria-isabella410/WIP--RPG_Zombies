@@ -4,7 +4,7 @@ namespace rpgConsumivel;
 
 public class Consumivel : Item
 {
-    private int QtdVidaRecuperada {get; set;}
+    public int QtdVidaRecuperada {get; private set;}
 
     public Consumivel(String nome, String descricao, int qtdvidarecuperada) : base(nome, descricao)
     {

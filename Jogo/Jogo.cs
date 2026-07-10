@@ -1,5 +1,7 @@
+using rpgItem;
 using rpgJogador;
 using rpgLocal;
+using rpgInventario;
 
 namespace rpgJogo;
 
