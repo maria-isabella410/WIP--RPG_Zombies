@@ -45,4 +45,8 @@ public class Arma : Item
         Console.WriteLine("Sua arma foi recarregada!");
         
     }
+    public Boolean PodeRecarregar()
+    {
+        return Tipo != TipoArma.Faca;
+    }
 }
