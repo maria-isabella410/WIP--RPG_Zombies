@@ -8,23 +8,24 @@ namespace rpgMapa;
 public class Mapa
 {
     private List<Local> Locais {get; set;}
-    private Local ruaPrincipal;
-    private Local mercado;
-    private Local igreja;
-    private Local casaAbandonada;
-    private Local hospital;
-    private Local delegacia;
-    private Local postoDeGasolina;
-    private Local escola;
-    private Local floresta;
-    private Local biblioteca;
-    private Local laboratorio;
-    private Random random {get; set;} = new Random();
+    public Local ruaPrincipal {get; private set;}
+    public Local mercado {get; private set;}
+    public Local igreja {get; private set;}
+    public Local casaAbandonada {get; private set;}
+    public Local hospital {get; private set;}
+    public Local delegacia {get; private set;}
+    public Local postoDeGasolina {get; private set;}
+    public Local escola {get; private set;}
+    public Local floresta {get; private set;}
+    public Local biblioteca {get; private set;}
+    public Local laboratorio {get; private set;}
+    private Random random {get; set;}
 
 
-    public Mapa()
+    public Mapa(Random random)
     {
         Locais = new List<Local>();
+        this.random = new Random();
 
         CriarLocais();
         ConectarLocais();

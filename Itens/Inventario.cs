@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using rpgArma;
 using rpgItem;
 
@@ -13,6 +14,16 @@ public class Inventario
     {
         Itens = new List<Item>();
         this.Capacidade = capacidade;
+    }
+    public List<Item> ListarItens()
+    {
+        List<Item> itens = new List<Item>();
+        
+        return Itens;
+    }
+    public void InspecionarItem(Item item)
+    {
+        Console.WriteLine($"{item.Nome} - {item.Descricao}");
     }
 
     public List<Arma> ListarArmas()

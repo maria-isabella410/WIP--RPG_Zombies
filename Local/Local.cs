@@ -38,4 +38,9 @@ public class Local
     {
         Zombies.Add(zombie);
     }
+    public static void DescreverLocal(Local local)
+    {
+        Console.WriteLine("Local: " + local.Nome);
+        Console.WriteLine("Descrição: " + local.Descricao);
+    }
 }

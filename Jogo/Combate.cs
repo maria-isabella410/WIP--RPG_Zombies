@@ -2,6 +2,7 @@ using rpgArma;
 using rpgJogador;
 using rpgSerVivo;
 using rpgZombie;
+using rpgJogo;
 
 namespace rpgCombate;
 
@@ -38,14 +39,10 @@ public class Combate
         Recarregar = 4,
         Info = 0
     }
-    private void DivisaoDeLinha()
-    {
-        Console.WriteLine("-------------------------------");
-    }
 
     private void StatusGeral()
     {
-        Console.WriteLine("-----------------------");
+        Jogo.DivisaoDeLinha();
         Console.WriteLine($"Jogador: [{Jogador.Vida} / {Jogador.VidaMaxima}] HP");
         Console.WriteLine($"Zombie: [{Zombie.Vida} / {Zombie.VidaMaxima}] HP");
         Console.WriteLine("Arma equipada: " + Jogador.ArmaEquipada);
@@ -56,14 +53,14 @@ public class Combate
     }
     private void Menu()
     {
-        Console.WriteLine("-----------------------");
+        Jogo.DivisaoDeLinha();
         Console.WriteLine("[1] - Atacar");
         Console.WriteLine("[2] - Desviar");
         Console.WriteLine("[3] - Equipar Arma");
         Console.WriteLine("[4] - Recarregar");
         Console.WriteLine("[0] - Info");
-        Console.WriteLine("-----------------------");
-        Console.WriteLine("--> ");
+        Jogo.DivisaoDeLinha();
+        Console.Write("--> ");
     }
     private void TurnoJogador()
     {
@@ -77,7 +74,7 @@ public class Combate
 
         if(escolha == opcoesMenu.Info)
         {
-            DivisaoDeLinha();
+            Jogo.DivisaoDeLinha();
 
             Console.WriteLine("Ao escolher [1] Atacar, será seu Ataque - a Defesa do zombie. Você não pode atacar sem uma arma em mãos. O zombie vai tentar desviar.");
             
@@ -117,7 +114,7 @@ public class Combate
                         Zombie.TomarDano(danoTomado);
                     }
 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Console.WriteLine("Você atacou o zombie!");
 
@@ -125,26 +122,26 @@ public class Combate
 
                     Console.WriteLine($"A vida do zombie é: [{Zombie.Vida} / {Zombie.VidaMaxima}]");
 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
                 }
                 else
                 {
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Console.WriteLine("Essa arma não está carregada, então você não pode usá-la!");
                     
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
                 }
 
                 break;
             case opcoesMenu.Desviar:
                 if(TentarDesviar(Jogador, Zombie))
                 {
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Console.WriteLine("Você desviou do ataque e garantiu 50% a mais de dano no próximo ataque!");
 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Jogador.BonusDesvio = true;
                 }
@@ -154,18 +151,18 @@ public class Combate
 
                     Jogador.TomarDano(danoTomado + (danoTomado / 3));
 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Console.WriteLine("Você não conseguiu desviar!");
 
                     Console.WriteLine("Você tomou " + danoTomado + " de dano! (1/3 a mais aplicado).");
                 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
                 }
 
                 break;
             case opcoesMenu.EquiparArma:
-                DivisaoDeLinha();
+                Jogo.DivisaoDeLinha();
 
                 Console.WriteLine("Qual arma deseja equipar?");
 
@@ -176,7 +173,7 @@ public class Combate
                     Console.WriteLine($"[{i + 1}] {armas[i].Nome}");
                 }
 
-                DivisaoDeLinha();
+                Jogo.DivisaoDeLinha();
 
                 Console.WriteLine("--> ");
 
@@ -201,20 +198,20 @@ public class Combate
                 }
                 else
                 {
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
 
                     Console.WriteLine("Não é possível recarregar!");
 
-                    DivisaoDeLinha();
+                    Jogo.DivisaoDeLinha();
                 }
 
                 break;
             default:
-                DivisaoDeLinha();
+                Jogo.DivisaoDeLinha();
 
                 Console.WriteLine("Entrada inválida!");
 
-                DivisaoDeLinha();
+                Jogo.DivisaoDeLinha();
 
                 break;
         }
