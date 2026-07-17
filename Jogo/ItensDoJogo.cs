@@ -3,6 +3,7 @@ using rpgChave;
 using rpgConsumivel;
 using rpgItem;
 using rpgMunicao;
+using rpgPorta;
 using rpgTipoArma;
 using rpgTipoChave;
 using rpgTipoMunicao;

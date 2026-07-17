@@ -1,11 +1,12 @@
 using rpgItem;
 using rpgJogador;
 using rpgLocal;
-using rpgInventario;
 using System.Security.Cryptography.X509Certificates;
-using rpgCombate;
 using rpgMapa;
 using System.Runtime.ConstrainedExecution;
+using rpgConsumivel;
+using rpgChave;
+using rpgPorta;
 
 namespace rpgJogo;
 
@@ -83,6 +84,10 @@ public class Jogo
         
                     opcoesInventario escolhaInventario = (opcoesInventario)opcaoInventario;
 
+                    if(escolhaInventario == opcoesInventario.Voltar)
+                    {
+                        return;
+                    }
                     switch (escolhaInventario)
                     {
                         case opcoesInventario.InspecionarItem:
@@ -98,9 +103,82 @@ public class Jogo
 
                             break;
                         case opcoesInventario.ConsumirItem:
-                            
+                            if(Jogador.Inventario.ListarConsumiveis().Count == 0)
+                            {
+                                Console.WriteLine("Você não possui nenhum consumível em seu inventário.");
+                                
+                                return;
+                            }
+                            if (Jogador.Vida.Equals(Jogador.VidaMaxima))
+                            {
+                                Console.WriteLine("Sua vida está cheia, você não precisa consumir nenhum item!");
+
+                                return;
+                            }
+                            List<Consumivel> consumiveis = new List<Consumivel>();
+
+                            Console.WriteLine("Qual item deseja consumir?");
+
+                            for(int i = 0; i < consumiveis.Count; i++)
+                            {
+                                Console.WriteLine($"[{i + 1}] {consumiveis[i].Nome}");
+                            }
+
+                            DivisaoDeLinha();
+
+                            Console.Write("--> ");
+
+                            int escolhaConsumivel = Convert.ToInt32(Console.ReadLine());
+
+                            if(escolhaConsumivel < 0 || escolhaConsumivel > consumiveis.Count)
+                            {
+                                Console.WriteLine("Entrada inválida");
+                            }
+                            else
+                            {
+                                Jogador.SeCurar(consumiveis[escolhaConsumivel - 1]);
+                                Jogador.Inventario.DescartarItem(consumiveis[escolhaConsumivel - 1]);
+
+                                Console.WriteLine("Você consumiu: " + consumiveis[escolhaConsumivel - 1].Nome);
+                                Console.WriteLine($"Vida atual: [{Jogador.Vida} / {Jogador.VidaMaxima}]");
+
+                                DivisaoDeLinha();
+                            }
+
                             break;
                         case opcoesInventario.UsarChave:
+                            List<Chave> chaves = new List<Chave>();
+
+                            if(Jogador.Inventario.ListarChaves().Count == 0)
+                            {
+                                Console.WriteLine("Você não possui nenhuma chave em seu inventário.");
+                                
+                                return;
+                            }
+
+                            Console.WriteLine("Qual chave deseja usar?");
+
+                            for(int i = 0; i < chaves.Count; i++)
+                            {
+                                Console.WriteLine($"[{i + 1}] {chaves[i].Nome}");
+                            }
+
+                            DivisaoDeLinha();
+
+                            Console.Write("--> ");
+
+                            int escolhaChave = Convert.ToInt32(Console.ReadLine());
+
+                            if(escolhaChave < 0 || escolhaChave > chaves.Count)
+                            {
+                                Console.WriteLine("Entrada inválida");
+                            }
+                            else
+                            {
+                                //add verificação da porta correta
+
+                                DivisaoDeLinha();
+                            }                          
 
                             break;
                         case opcoesInventario.DescartarItem:
@@ -122,9 +200,17 @@ public class Jogo
                     break;
                 case opcoesMenu.VerificarStatus:
                     MostrarStatus();
+
+                    break;
+                case opcoesMenu.EncerrarJogo:                    
+                    Encerrar();
+
+                    emExecucao = false;
+
                     break;
                 default:
                     Console.WriteLine("Entrada inválida!");
+                    
                     break;
             }
         }
@@ -139,6 +225,7 @@ public class Jogo
         Console.WriteLine("[2] Abrir mapa");
         Console.WriteLine("[3] Abrir inventário");
         Console.WriteLine("[4] Verificar status");
+        Console.WriteLine("[0] Encerrar jogo");
         Console.Write("--> ");
         DivisaoDeLinha();
     }
@@ -147,15 +234,16 @@ public class Jogo
         Explorar = 1,
         AbrirMapa = 2,
         AbrirInventario = 3,
-        VerificarStatus = 4
+        VerificarStatus = 4,
+        EncerrarJogo = 0
     }
     private void MenuInventario()
     {
         DivisaoDeLinha();
         Console.WriteLine("O que quer fazer?");
         Console.WriteLine("[1] Inspecionar item");
-        Console.WriteLine("[2] Usar uma chave");
-        Console.WriteLine("[3] Consumir um item");
+        Console.WriteLine("[2] Usar chave");
+        Console.WriteLine("[3] Consumir item");
         Console.WriteLine("[4] Descartar item");
         Console.WriteLine("[0] Voltar");
         Console.Write("--> ");
@@ -166,7 +254,8 @@ public class Jogo
         InspecionarItem = 1,
         UsarChave = 2,
         ConsumirItem = 3,
-        DescartarItem = 4
+        DescartarItem = 4,
+        Voltar = 0
     }
     public void Explorar()
     {
@@ -209,6 +298,8 @@ public class Jogo
     }
     public void Encerrar()
     {
+        Console.WriteLine("Obrigada por jogar! Jogo finalizado...");
         
+        Environment.Exit(0);
     }
 }

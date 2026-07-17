@@ -175,7 +175,7 @@ public class Combate
 
                 Jogo.DivisaoDeLinha();
 
-                Console.WriteLine("--> ");
+                Console.Write("--> ");
 
                 int escolhaArma = Convert.ToInt32(Console.ReadLine());
 

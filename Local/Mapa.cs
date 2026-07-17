@@ -155,6 +155,7 @@ public class Mapa
         ruaPrincipal.AdicionarItens(ItensDoJogo.CriarAgua());
         ruaPrincipal.AdicionarItens(ItensDoJogo.CriarBandagem());
         ruaPrincipal.AdicionarItens(ItensDoJogo.CriarFaca());
+        ruaPrincipal.AdicionarItens(ItensDoJogo.CriarMapaDaCidade());
 
         if(Chance(40))
         {
@@ -438,5 +439,11 @@ public class Mapa
         laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieComumFraco());
         laboratorio.AdicionarZombie(ZombiesDoJogo.CriaZombieFinal());
 
+    }
+    public void MostrarMapa()
+    {
+        Console.WriteLine();
+
+        //continuar depois!!
     }
 }

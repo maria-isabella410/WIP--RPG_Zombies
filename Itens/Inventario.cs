@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Data;
 using rpgArma;
+using rpgConsumivel;
 using rpgItem;
+using rpgChave;
 
 namespace rpgInventario;
 
@@ -40,7 +42,34 @@ public class Inventario
 
         return armas;   
     }
+    public List<Consumivel> ListarConsumiveis()
+    {
+        List<Consumivel> consumiveis = new List<Consumivel>();
 
+        foreach(Item item in Itens)
+        {
+            if(item is Consumivel consumivel)
+            {
+                consumiveis.Add(consumivel);
+            }
+        }
+
+        return consumiveis;
+    }
+    public List<Chave> ListarChaves()
+    {
+        List<Chave> chaves = new List<Chave>();
+
+        foreach(Item item in Itens)
+        {
+            if(item is Chave chave)
+            {
+                chaves.Add(chave);
+            }
+        }
+
+        return chaves;
+    }
     public void GuardarItem(Item item)
     {
         Itens.Add(item);
