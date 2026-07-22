@@ -7,6 +7,8 @@ using System.Runtime.ConstrainedExecution;
 using rpgConsumivel;
 using rpgChave;
 using rpgPorta;
+using rpgZombie;
+using rpgNpc;
 
 namespace rpgJogo;
 
@@ -51,8 +53,7 @@ public class Jogo
         
         DivisaoDeLinha();
 
-        Console.WriteLine("Atualmente, você está em: ");
-        Local.DescreverLocal(Mapa.ruaPrincipal);
+        Mapa.MostrarLocalAtual(jogador);
 
         while (emExecucao)
         {
@@ -65,10 +66,34 @@ public class Jogo
             switch (escolha)
             {
                 case opcoesMenu.Explorar:
-                
+                    //continuar dps
+                    
                     break;
                 case opcoesMenu.AbrirMapa:
-                
+                    if (!jogador.ContemMapa)
+                    {
+                        Console.WriteLine("Você não tem o mapa da cidade!");
+                        return;
+                    }
+                    else
+                    {
+                        Mapa.MostrarMapa();
+
+                        MenuMapa();
+
+                        int opcaoMenuMapa = Convert.ToInt32(Console.ReadLine());
+        
+                        opcoesMapa escolhaMenuMapa = (opcoesMapa)opcaoMenuMapa;
+
+                        switch (escolhaMenuMapa)
+                        {
+                            case opcoesMapa.Voltar:
+                                return;
+                            default:
+                                Console.WriteLine("Entrada inválida!");
+                                break;
+                        }
+                    }
                     break;
                 case opcoesMenu.AbrirInventario:
                     List<Item> itens = Jogador.Inventario.ListarItens();
@@ -171,11 +196,14 @@ public class Jogo
 
                             if(escolhaChave < 0 || escolhaChave > chaves.Count)
                             {
-                                Console.WriteLine("Entrada inválida");
+                                Console.WriteLine("Entrada inválida!");
                             }
                             else
                             {
-                                //add verificação da porta correta
+                                if(Jogador.LocalAtual.Porta != null)
+                                {
+                                    Jogador.LocalAtual.Porta.Abrir(chaves[escolhaChave]);
+                                }
 
                                 DivisaoDeLinha();
                             }                          
@@ -202,6 +230,38 @@ public class Jogo
                     MostrarStatus();
 
                     break;
+                case opcoesMenu.IrParaOutroLocal:
+                    EscolherDirecao(jogador.LocalAtual);
+
+                    Char opcaoDirecao = Convert.ToChar(Console.ReadLine());
+
+                    opcoesDirecao escolhaDirecao = (opcoesDirecao)opcaoDirecao;
+
+                    switch (escolhaDirecao)
+                    {
+                        case opcoesDirecao.Norte:
+                            jogador.LocalAtual = jogador.LocalAtual.Norte;
+
+                            break;
+                        case opcoesDirecao.Leste:
+                            jogador.LocalAtual = jogador.LocalAtual.Leste;
+                            
+                            break;
+                        case opcoesDirecao.Oeste:
+                            jogador.LocalAtual = jogador.LocalAtual.Oeste;
+                            
+                            break;
+                        case opcoesDirecao.Sul:
+                            jogador.LocalAtual = jogador.LocalAtual.Sul;
+                    
+                            break;
+                        default:
+                            Console.WriteLine("Entrada inválida!");
+
+                            break;
+                    }
+
+                    break;
                 case opcoesMenu.EncerrarJogo:                    
                     Encerrar();
 
@@ -225,6 +285,7 @@ public class Jogo
         Console.WriteLine("[2] Abrir mapa");
         Console.WriteLine("[3] Abrir inventário");
         Console.WriteLine("[4] Verificar status");
+        Console.WriteLine("[5] Ir para outro local");
         Console.WriteLine("[0] Encerrar jogo");
         Console.Write("--> ");
         DivisaoDeLinha();
@@ -235,6 +296,7 @@ public class Jogo
         AbrirMapa = 2,
         AbrirInventario = 3,
         VerificarStatus = 4,
+        IrParaOutroLocal = 5,
         EncerrarJogo = 0
     }
     private void MenuInventario()
@@ -257,8 +319,60 @@ public class Jogo
         DescartarItem = 4,
         Voltar = 0
     }
-    public void Explorar()
+    public void MenuMapa()
     {
+        Console.WriteLine("[1] Voltar");
+        Console.Write("--> ");
+    }
+    private enum opcoesMapa
+    {
+        Voltar = 1
+    }
+    public void Explorar(Jogador jogador, List<Item> itensLocal, List<Zombie> zombiesLocal, List<Npc> npcsLocal)
+    {
+        Console.WriteLine("=======================");
+        Console.WriteLine(jogador.LocalAtual.Nome);
+        Console.WriteLine("=======================");
+
+        if(zombiesLocal.Count > 0)
+        {
+            Console.WriteLine($"Há {zombiesLocal.Count} zombie(s) aqui.");
+        }
+        else
+        {
+            Console.WriteLine("Não há zombies aqui.");
+        }
+
+        DivisaoDeLinha();
+
+        if(itensLocal.Count > 0)
+        {
+            Console.WriteLine("Explorando, você encontrou:");
+        
+            foreach(Item item in itensLocal)
+            {
+                Console.WriteLine($"- {item.Nome}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Você não encontrou nenhum item.");
+        }
+
+        DivisaoDeLinha();
+        
+        if(npcsLocal.Count > 0)
+        {
+            foreach(Npc npc in npcsLocal) Console.WriteLine($"Há uma pessoa aqui: {npc.Nome}");
+        }
+        else
+        {
+            Console.WriteLine("Não há ninguém aqui.");
+        }
+
+        DivisaoDeLinha();
+
+        //continuar depois a criaçao de menu para dialogo com npcs, guarda de itens e enfretamento de zombies!
         
     }
     public void MostrarStatus()
@@ -276,10 +390,6 @@ public class Jogo
         }
         DivisaoDeLinha();
     }
-    public void AbrirInventario()
-    {
-        
-    }
     public void ConversarComNpc()
     {
         
@@ -288,9 +398,32 @@ public class Jogo
     {
         
     }
-    public void EscolherDirecao()
+    public void EscolherDirecao(Local local)
     {
-        
+        if(local.Norte != null)
+        {
+            Console.WriteLine($"[N] - {local.Norte}");
+        }
+        if(local.Norte != null)
+        {
+            Console.WriteLine($"[L] - {local.Leste}");
+        }
+        if(local.Norte != null)
+        {
+            Console.WriteLine($"[O] - {local.Oeste}");
+        }
+        if(local.Norte != null)
+        {
+            Console.WriteLine($"[S] - {local.Sul}");
+        }        
+        Console.Write("--> ");
+    }
+    private enum opcoesDirecao
+    {
+        Norte = 'N',
+        Leste = 'L',
+        Oeste = 'O',
+        Sul = 'S'
     }
     public void AtualizarMissao()
     {

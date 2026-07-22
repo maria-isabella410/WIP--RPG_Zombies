@@ -20,6 +20,7 @@ public class Porta
         if(chave.Tipo == ChaveNecessaria)
         {
             this.Aberta = true;
+            Console.WriteLine("Você abriu a porta!");
         }
         else
         {
