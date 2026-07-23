@@ -6,9 +6,9 @@ using rpgMapa;
 using System.Runtime.ConstrainedExecution;
 using rpgConsumivel;
 using rpgChave;
-using rpgPorta;
 using rpgZombie;
 using rpgNpc;
+using rpgCombate;
 
 namespace rpgJogo;
 
@@ -64,7 +64,7 @@ public class Jogo
             switch (escolha)
             {
                 case opcoesMenu.Explorar:
-                    //continuar dps
+                    Explorar(Jogador, Jogador.LocalAtual.Itens, Jogador.LocalAtual.Zombies, Jogador.LocalAtual.Npcs);
                     
                     break;
                 case opcoesMenu.AbrirMapa:
@@ -345,10 +345,10 @@ public class Jogo
         if(itensLocal.Count > 0)
         {
             Console.WriteLine("Explorando, você encontrou:");
-        
-            foreach(Item item in itensLocal)
+
+            for(int i = 0; i <= itensLocal.Count; i++)
             {
-                Console.WriteLine($"- {item.Nome}");
+                Console.WriteLine($"[{i + 1}] {itensLocal[i].Nome}");
             }
         }
         else
@@ -369,8 +369,123 @@ public class Jogo
 
         DivisaoDeLinha();
 
-        //continuar depois a criaçao de menu para dialogo com npcs, guarda de itens e enfretamento de zombies!
-        
+        int opcaoEscolhida;
+
+        if(itensLocal.Count > 0)
+        {
+            do
+            {
+                for(int i = 0; i <= itensLocal.Count; i++)
+                {
+                    Console.WriteLine($"[{i + 1}] {itensLocal[i].Nome}");
+                }
+
+                Console.WriteLine("[1] Coletar item");
+                Console.WriteLine("[0] Voltar");
+                Console.Write("--> ");
+
+                opcaoEscolhida = Convert.ToInt32(Console.ReadLine());
+
+                if(opcaoEscolhida < 0 || opcaoEscolhida > itensLocal.Count)
+                {
+                    Console.WriteLine("Entrada inválida!");
+                }
+                else{
+                    DivisaoDeLinha();
+
+                    switch (opcaoEscolhida)
+                    {
+                        case 1:
+                            Console.WriteLine("Qual item deseja coletar?");
+                            int opcaoItemEscolhido = Convert.ToInt32(Console.ReadLine());
+                            
+                            Item item = itensLocal[opcaoItemEscolhido - 1];
+
+                            Jogador.Inventario.GuardarItem(item);
+
+                            itensLocal.RemoveAt(opcaoItemEscolhido - 1);
+
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            Console.WriteLine("Entrada inválida!");
+
+                            break;
+                    }
+                }
+            } while(opcaoEscolhida != 0);
+        }
+
+        if(zombiesLocal.Count > 0)
+        {
+            Console.WriteLine("O que deseja fazer quanto ao(s) zombie(s)?");
+            Console.WriteLine("[1] Lutar");
+            Console.WriteLine("[2] Ignorar");
+            Console.Write("--> ");
+
+            int opcaoCombate = Convert.ToInt32(Console.ReadLine());
+
+            if(opcaoCombate < 0 || opcaoCombate > 2)
+            {
+                Console.WriteLine("Entrada inválida!");
+            }
+            else
+            {
+                int numeroDeZombies = zombiesLocal.Count;
+
+                switch (opcaoCombate)
+                {
+                    case 1:
+                        Combate combate = new Combate(Jogador, zombiesLocal[numeroDeZombies], random);
+
+                        combate.IniciarCombate();
+
+                        if (!zombiesLocal[numeroDeZombies].EstaVivo())
+                        {
+                            zombiesLocal.RemoveAt(numeroDeZombies);
+                        }
+
+                        numeroDeZombies--;
+
+                        break;
+                    case 2:
+                        Console.WriteLine("Você ignorou o(s) zombie(s).");
+
+                        break;
+                }    
+            }
+        }
+
+        if(npcsLocal.Count > 0)
+        {
+            Console.WriteLine($"Deseja conversar com {npcsLocal[0].Nome}?");
+            Console.WriteLine("[1] Sim");
+            Console.WriteLine("[2] Não");
+            Console.Write("--> ");
+
+            int opcaoConversa = Convert.ToInt32(Console.ReadLine());
+
+            if(opcaoConversa < 0 || opcaoConversa > 2)
+            {
+                Console.WriteLine("Entrada inválida!");
+            }
+            else
+            {
+                switch (opcaoConversa)
+                {
+                    case 1:
+                    //terminar isso aq depoissss
+                        break;
+                    case 2:
+
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+        }      
     }
     public void MostrarStatus()
     {

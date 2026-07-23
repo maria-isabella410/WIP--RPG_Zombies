@@ -14,9 +14,9 @@ public class Local
     public Local? Leste {get; set;}
     public Local? Oeste {get; set;}
     public Porta? Porta {get; set;}
-    private List<Item> Itens {get; set;}
-    private List<Npc> Npcs {get; set;}
-    private List<Zombie> Zombies {get; set;}
+    public List<Item> Itens {get; private set;}
+    public List<Npc> Npcs {get; private set;}
+    public List<Zombie> Zombies {get; private set;}
 
     public Local(String nome, String descricao, Porta? porta)
     {

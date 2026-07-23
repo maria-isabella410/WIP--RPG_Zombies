@@ -10,7 +10,7 @@ namespace rpgInventario;
 public class Inventario
 {
     private List<Item> Itens {get; set;}
-    private int Capacidade {get; set;}
+    public int Capacidade {get; set;} = 10;
 
     public Inventario(int capacidade)
     {
