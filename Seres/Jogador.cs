@@ -15,6 +15,7 @@ public class Jogador : Pessoa
     public Boolean BonusDesvio {get; set;} = false;
     public Boolean MochilaEquipada {get; set;} = false;
     public Boolean ColeteEquipado {get; set;} = false;
+    public Boolean ContemMapa {get; set;} = false;
     public Missao? MissaoAtual {get; set;}
     public Local LocalAtual {get; set;}
 

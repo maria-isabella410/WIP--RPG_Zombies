@@ -15,15 +15,13 @@ namespace rpgJogo;
 public class Jogo
 {
     private Jogador Jogador {get; set;}
-    private Local LocalAtual {get; set;}
     private Boolean emExecucao {get; set;}
     private Mapa Mapa {get; set;}
-    private Random random {get; set;}
+    private Random random = new Random();
 
-    public Jogo(Jogador jogador, Local localatual)
+    public Jogo(Jogador jogador)
     {
         this.Jogador = jogador;
-        this.LocalAtual = localatual;
     }
     public static void DivisaoDeLinha()
     {
@@ -33,14 +31,14 @@ public class Jogo
     {
         emExecucao = true;
 
-        Mapa mapa = new Mapa(random);
+        Mapa = new Mapa(random);
 
         Console.WriteLine("Qual será seu nome?");
         Console.Write("--> ");
 
         String nomeJogador = Console.ReadLine();
 
-        Jogador jogador = new Jogador(100, 100, 30, 20, 25, nomeJogador, Mapa.ruaPrincipal);
+        Jogador = new Jogador(100, 100, 30, 20, 25, nomeJogador, Mapa.ruaPrincipal);
 
         //contexto inicial
         DivisaoDeLinha();
@@ -53,7 +51,7 @@ public class Jogo
         
         DivisaoDeLinha();
 
-        Mapa.MostrarLocalAtual(jogador);
+        Mapa.MostrarLocalAtual(Jogador);
 
         while (emExecucao)
         {
@@ -70,10 +68,9 @@ public class Jogo
                     
                     break;
                 case opcoesMenu.AbrirMapa:
-                    if (!jogador.ContemMapa)
+                    if (!Jogador.ContemMapa)
                     {
                         Console.WriteLine("Você não tem o mapa da cidade!");
-                        return;
                     }
                     else
                     {
@@ -140,7 +137,7 @@ public class Jogo
 
                                 return;
                             }
-                            List<Consumivel> consumiveis = new List<Consumivel>();
+                            List<Consumivel> consumiveis = Jogador.Inventario.ListarConsumiveis();
 
                             Console.WriteLine("Qual item deseja consumir?");
 
@@ -172,7 +169,7 @@ public class Jogo
 
                             break;
                         case opcoesInventario.UsarChave:
-                            List<Chave> chaves = new List<Chave>();
+                            List<Chave> chaves = Jogador.Inventario.ListarChaves();
 
                             if(Jogador.Inventario.ListarChaves().Count == 0)
                             {
@@ -202,7 +199,7 @@ public class Jogo
                             {
                                 if(Jogador.LocalAtual.Porta != null)
                                 {
-                                    Jogador.LocalAtual.Porta.Abrir(chaves[escolhaChave]);
+                                    Jogador.LocalAtual.Porta.Abrir(chaves[escolhaChave - 1]);
                                 }
 
                                 DivisaoDeLinha();
@@ -231,7 +228,7 @@ public class Jogo
 
                     break;
                 case opcoesMenu.IrParaOutroLocal:
-                    EscolherDirecao(jogador.LocalAtual);
+                    EscolherDirecao(Jogador.LocalAtual);
 
                     Char opcaoDirecao = Convert.ToChar(Console.ReadLine());
 
@@ -240,19 +237,19 @@ public class Jogo
                     switch (escolhaDirecao)
                     {
                         case opcoesDirecao.Norte:
-                            jogador.LocalAtual = jogador.LocalAtual.Norte;
+                            Jogador.LocalAtual = Jogador.LocalAtual.Norte;
 
                             break;
                         case opcoesDirecao.Leste:
-                            jogador.LocalAtual = jogador.LocalAtual.Leste;
+                            Jogador.LocalAtual = Jogador.LocalAtual.Leste;
                             
                             break;
                         case opcoesDirecao.Oeste:
-                            jogador.LocalAtual = jogador.LocalAtual.Oeste;
+                            Jogador.LocalAtual = Jogador.LocalAtual.Oeste;
                             
                             break;
                         case opcoesDirecao.Sul:
-                            jogador.LocalAtual = jogador.LocalAtual.Sul;
+                            Jogador.LocalAtual = Jogador.LocalAtual.Sul;
                     
                             break;
                         default:
@@ -404,15 +401,15 @@ public class Jogo
         {
             Console.WriteLine($"[N] - {local.Norte}");
         }
-        if(local.Norte != null)
+        if(local.Leste != null)
         {
             Console.WriteLine($"[L] - {local.Leste}");
         }
-        if(local.Norte != null)
+        if(local.Oeste != null)
         {
             Console.WriteLine($"[O] - {local.Oeste}");
         }
-        if(local.Norte != null)
+        if(local.Sul != null)
         {
             Console.WriteLine($"[S] - {local.Sul}");
         }        
@@ -432,7 +429,5 @@ public class Jogo
     public void Encerrar()
     {
         Console.WriteLine("Obrigada por jogar! Jogo finalizado...");
-        
-        Environment.Exit(0);
     }
 }
