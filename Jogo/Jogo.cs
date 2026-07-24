@@ -1,14 +1,13 @@
 using rpgItem;
 using rpgJogador;
 using rpgLocal;
-using System.Security.Cryptography.X509Certificates;
 using rpgMapa;
-using System.Runtime.ConstrainedExecution;
 using rpgConsumivel;
 using rpgChave;
 using rpgZombie;
 using rpgNpc;
 using rpgCombate;
+using rpgMetodosDialogo;
 
 namespace rpgJogo;
 
@@ -325,10 +324,10 @@ public class Jogo
     {
         Voltar = 1
     }
-    public void Explorar(Jogador jogador, List<Item> itensLocal, List<Zombie> zombiesLocal, List<Npc> npcsLocal)
+    public void Explorar(Jogador Jogador, List<Item> itensLocal, List<Zombie> zombiesLocal, List<Npc> npcsLocal)
     {
         Console.WriteLine("=======================");
-        Console.WriteLine(jogador.LocalAtual.Nome);
+        Console.WriteLine(Jogador.LocalAtual.Nome);
         Console.WriteLine("=======================");
 
         if(zombiesLocal.Count > 0)
@@ -475,7 +474,8 @@ public class Jogo
                 switch (opcaoConversa)
                 {
                     case 1:
-                    //terminar isso aq depoissss
+                        ConversarComNpc(npcsLocal[0], Jogador);
+
                         break;
                     case 2:
 
@@ -502,9 +502,15 @@ public class Jogo
         }
         DivisaoDeLinha();
     }
-    public void ConversarComNpc()
+    public void ConversarComNpc(Npc npc, Jogador Jogador)
     {
-        
+        DivisaoDeLinha();
+
+        MetodosDialogo dialogo = new MetodosDialogo(Jogador);
+
+        Console.WriteLine(npc.Dialogo.Saudacao);
+
+        dialogo.ContinuarDialogo(npc);        
     }
     public void ColetarItem()
     {
