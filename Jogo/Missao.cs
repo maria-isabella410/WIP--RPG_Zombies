@@ -5,10 +5,10 @@ namespace rpgMissao;
 
 public class Missao
 {
-    private String NomeDaMissao {get; set;}
-    private String Descricao {get; set;}
-    private Item Recompensa {get; set;}
-    private bool Concluida {get; set;} = false;
+    public String NomeDaMissao {get; set;}
+    public String Descricao {get; set;}
+    public Item Recompensa {get; set;}
+    public bool Concluida {get; set;} = false;
 
     public Missao(String nomedamissao, String descricao, Item recompensa)
     {

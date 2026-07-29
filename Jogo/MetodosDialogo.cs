@@ -90,6 +90,13 @@ public class MetodosDialogo
 
             Console.WriteLine("[4] Preciso ir embora.");
 
+            if(topicosFalados.Contains(TopicoDialogo.Quem) && topicosFalados.Contains(TopicoDialogo.Historia) && topicosFalados.Contains(TopicoDialogo.Missao))
+            {
+                conversando = false;
+
+                npc.ConversouTudo = true;
+            }
+
             int escolha = Convert.ToInt32(Console.ReadLine());
 
             switch(escolha)
@@ -121,20 +128,17 @@ public class MetodosDialogo
                     
                     break;    
             }
-
-            if(topicosFalados.Contains(TopicoDialogo.Quem) && topicosFalados.Contains(TopicoDialogo.Historia) && topicosFalados.Contains(TopicoDialogo.Missao))
-            {
-                conversando = false;
-
-                npc.ConversouTudo = true;
-            }
-
-            if (npc.ConversouTudo)
-            {
-                //dps adicionar dialogos de quando a missao ainda esta incompleta;
-            }
-
             //dps adicionar dialogo de missao completa
+        }
+
+        if (npc.ConversouTudo && !Jogador.MissaoAtual.Concluida)
+        {
+            Console.WriteLine("Estou esperando...");
+        }
+
+        if(npc.ConversouTudo && Jogador.MissaoAtual.Concluida)
+        {
+            Console.WriteLine(npc.Dialogo.MissaoConcluida.Replace("{nome}", Jogador.Nome));
         }
     }
 }
