@@ -35,18 +35,7 @@ public class Jogo
 
         Jogador = new Jogador(100, 100, 30, 20, 25, nomeJogador, Mapa.ruaPrincipal);
 
-        //contexto inicial
-        DivisaoDeLinha();
-        
-        Console.WriteLine("O mundo como conhecíamos acabou...");
-        Console.WriteLine("Mortos-vivos tomaram as ruas da cidade, devorando todos as pessoas que encontravam!");
-        Console.WriteLine("Algumas pessoas conseguiram escapar e se esconderam em abrigos improvisados, mas os recursos são escassos e as ruas são perigosas...");
-        Console.WriteLine($"Você, {Jogador.Nome}, é uma dessas pessoas. Você sobreviveu até aqui, porém, mais do que sobreviver, você quer descobrir o que causou tudo isso e como resolver!");
-        Console.WriteLine("Busque recursos, ajude outros sobreviventes, encontre respostas e claro, sobreviva.");
-        
-        DivisaoDeLinha();
-
-        Mapa.MostrarLocalAtual(Jogador);
+        Introducao(Jogador);
 
         while (emExecucao)
         {
@@ -319,6 +308,20 @@ public class Jogo
     private enum opcoesMapa
     {
         Voltar = 1
+    }
+    public void Introducao(Jogador Jogador)
+    {
+        DivisaoDeLinha();
+        
+        Console.WriteLine("O mundo como conhecíamos acabou...");
+        Console.WriteLine("Mortos-vivos tomaram as ruas da cidade, devorando todos as pessoas que encontravam!");
+        Console.WriteLine("Algumas pessoas conseguiram escapar e se esconderam em abrigos improvisados, mas os recursos são escassos e as ruas são perigosas...");
+        Console.WriteLine($"Você, {Jogador.Nome}, é uma dessas pessoas. Você sobreviveu até aqui, porém, mais do que sobreviver, você quer descobrir o que causou tudo isso e como resolver!");
+        Console.WriteLine("Busque recursos, ajude outros sobreviventes, encontre respostas e claro, sobreviva.");
+        
+        DivisaoDeLinha();
+
+        Mapa.MostrarLocalAtual(Jogador);
     }
     public void Explorar(Jogador Jogador, List<Item> itensLocal, List<Zombie> zombiesLocal, List<Npc> npcsLocal)
     {
