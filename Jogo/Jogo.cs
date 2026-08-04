@@ -18,10 +18,6 @@ public class Jogo
     private Mapa Mapa {get; set;}
     private Random random = new Random();
 
-    public Jogo(Jogador jogador)
-    {
-        this.Jogador = jogador;
-    }
     public static void DivisaoDeLinha()
     {
         Console.WriteLine("-----------------------");
@@ -345,7 +341,7 @@ public class Jogo
         {
             Console.WriteLine("Explorando, você encontrou:");
 
-            for(int i = 0; i <= itensLocal.Count; i++)
+            for(int i = 0; i < itensLocal.Count; i++)
             {
                 Console.WriteLine($"[{i + 1}] {itensLocal[i].Nome}");
             }
@@ -374,7 +370,7 @@ public class Jogo
         {
             do
             {
-                for(int i = 0; i <= itensLocal.Count; i++)
+                for(int i = 0; i < itensLocal.Count; i++)
                 {
                     Console.WriteLine($"[{i + 1}] {itensLocal[i].Nome}");
                 }
@@ -440,9 +436,9 @@ public class Jogo
 
                         combate.IniciarCombate();
 
-                        if (!zombiesLocal[numeroDeZombies].EstaVivo())
+                        if (!zombiesLocal[numeroDeZombies - 1].EstaVivo())
                         {
-                            zombiesLocal.RemoveAt(numeroDeZombies);
+                            zombiesLocal.RemoveAt(numeroDeZombies - 1);
                         }
 
                         numeroDeZombies--;
@@ -478,10 +474,10 @@ public class Jogo
 
                         break;
                     case 2:
-
-                        break;
+                        return;
                     default:
-
+                        Console.WriteLine("Entrada inválida!"); 
+                        
                         break;
                 }
             }

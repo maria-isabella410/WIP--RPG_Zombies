@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maria.franca\\Documents\\GitHub\\RPG-Zombies\\RPG-Zombies.csproj": {}
+    "C:\\Users\\maria.franca\\Documents\\GitHub\\WIP--RPG_Zombies\\RPG-Zombies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maria.franca\\Documents\\GitHub\\RPG-Zombies\\RPG-Zombies.csproj": {
+    "C:\\Users\\maria.franca\\Documents\\GitHub\\WIP--RPG_Zombies\\RPG-Zombies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maria.franca\\Documents\\GitHub\\RPG-Zombies\\RPG-Zombies.csproj",
+        "projectUniqueName": "C:\\Users\\maria.franca\\Documents\\GitHub\\WIP--RPG_Zombies\\RPG-Zombies.csproj",
         "projectName": "RPG-Zombies",
-        "projectPath": "C:\\Users\\maria.franca\\Documents\\GitHub\\RPG-Zombies\\RPG-Zombies.csproj",
+        "projectPath": "C:\\Users\\maria.franca\\Documents\\GitHub\\WIP--RPG_Zombies\\RPG-Zombies.csproj",
         "packagesPath": "C:\\Users\\maria.franca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maria.franca\\Documents\\GitHub\\RPG-Zombies\\obj\\",
+        "outputPath": "C:\\Users\\maria.franca\\Documents\\GitHub\\WIP--RPG_Zombies\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\maria.franca\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\maria.franca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
