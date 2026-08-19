@@ -1,6 +1,6 @@
 using rpgItem;
 using rpgNpc;
-using rpgPorta;
+using rpgSala;
 using rpgZombie;
 
 namespace rpgLocal;
@@ -13,16 +13,16 @@ public class Local
     public Local? Sul {get; set;}
     public Local? Leste {get; set;}
     public Local? Oeste {get; set;}
-    public Porta? Porta {get; set;}
+    public Sala? SalaTrancada {get; set;}
+    // public Porta? Porta {get; set;}
     public List<Item> Itens {get; private set;}
     public List<Npc> Npcs {get; private set;}
     public List<Zombie> Zombies {get; private set;}
 
-    public Local(String nome, String descricao, Porta? porta)
+    public Local(String nome, String descricao)
     {
         this.Nome = nome;
         this.Descricao = descricao;
-        this.Porta = porta;
         
         Itens = new List<Item>();
         Npcs = new List<Npc>();

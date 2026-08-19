@@ -15,7 +15,7 @@ public class MissoesDoJogo
     }
     public static Missao CriaMissaoCientista()
     {
-        return new Missao("- Enontre documentos perdidos -", "Você deve ir até a biblioteca e encontrar uma pasta de documentos deixada pelo cientista Freddie. Se trouxer o que ele precisa, ele poderá finalizar a criação do antídoto. (Recompensa: Imunidade ao vírus - Final bom)", ItensDoJogo.CriarAntidoto());
+        return new Missao("- Encontre documentos perdidos -", "Você deve ir até a biblioteca e encontrar uma pasta de documentos deixada pelo cientista Freddie. Se trouxer o que ele precisa, ele poderá finalizar a criação do antídoto. (Recompensa: Imunidade ao vírus - Final bom)", ItensDoJogo.CriarAntidoto());
     }
     public static Missao CriaMissaoPadre()
     {

@@ -16,4 +16,5 @@ public class Missao
         this.Descricao = descricao;
         this.Recompensa = recompensa;
     }
+    
 }
